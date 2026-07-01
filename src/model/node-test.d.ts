@@ -14,3 +14,5 @@ declare module 'node:assert/strict' {
   };
   export default assert;
 }
+
+declare module '*.css';

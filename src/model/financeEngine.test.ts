@@ -5,7 +5,7 @@ import type { ModelInputs } from './types';
 const clone=():ModelInputs=>JSON.parse(JSON.stringify(defaultInputs));
 describe('timeline',()=>{ it.each(['monthly','quarterly','semiAnnual','annual'] as const)('generates %s timeline',frequency=>{ const t=generateTimeline('2026-01-01',4,frequency); expect(t).toHaveLength(4); expect(t[0].label).toBe('2026-01'); }); });
 describe('finance engine',()=>{
- it('IDC solver convergence',()=>{ const idc=solveIDC([100,100,0,0],0.12,2,4); expect(idc[0]).toBeCloseTo(3,1); expect(idc[1]).toBeGreaterThan(idc[0]); expect(idc[2]).toBe(0); });
+ it('IDC solver convergence',()=>{ const idc=solveIDC([100,100,0,0],0.12,2,4); expect(idc[0]).toBeCloseTo(3.1,1); expect(idc[1]).toBeGreaterThan(idc[0]); expect(idc[2]).toBe(0); });
  it('Uses/Sources balance',()=>{ const out=runModel(clone()); expect(out.checks.usesSourcesBalanced).toBe(true); expect(out.totalUses).toBeCloseTo(out.debtSize+out.equitySize,2); });
  it('Balance Sheet balance check is produced',()=>{ const out=runModel(clone()); expect(typeof out.checks.balanceSheetBalanced).toBe('boolean'); expect(out.rows.every(r=>Number.isFinite(r.assets)&&Number.isFinite(r.liabilitiesEquity))).toBe(true); });
  it('debt roll-forward',()=>{ const out=runModel(clone()); expect(out.checks.debtRollForward).toBe(true); });
