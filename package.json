@@ -1,11 +1,1 @@
-{
-  "name": "dc-fm",
-  "version": "0.1.0",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "test": "npm run build && node --test dist/model/*.test.js",
-    "typecheck": "tsc --noEmit -p tsconfig.json"
-  }
-}
+{"scripts":{"dev":"vite","build":"tsc && vite build","test":"vitest run","preview":"vite preview"},"dependencies":{"@vitejs/plugin-react":"latest","vite":"latest","react":"latest","react-dom":"latest"},"devDependencies":{"typescript":"latest","vitest":"latest","jsdom":"latest","@types/react":"latest","@types/react-dom":"latest"}}
